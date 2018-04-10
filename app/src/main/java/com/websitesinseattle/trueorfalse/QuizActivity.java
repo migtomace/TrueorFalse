@@ -1,5 +1,6 @@
 package com.websitesinseattle.trueorfalse;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,6 +21,7 @@ public class QuizActivity extends Activity implements View.OnClickListener {
 
     //set counts
     int count = 0;
+    int qLength = questions.length;
 
     int score = 0;
     boolean answer = false;
@@ -47,6 +49,11 @@ public class QuizActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
+        //set action bar icon
+        getActionBar();
+        ActionBar actionBar = getActionBar();
+        actionBar.setIcon(R.mipmap.ic_launcher);
+
         //set references
         scoreText = findViewById(R.id.scoreID);
         questionText = findViewById(R.id.questionID);
@@ -70,6 +77,7 @@ public class QuizActivity extends Activity implements View.OnClickListener {
             Intent i = new Intent(QuizActivity.this, ResultsActivity.class);
             Bundle bundle = new Bundle();
             bundle.putInt("scoreID", score);
+            bundle.putInt("qLength", qLength);
             i.putExtras(bundle);
             QuizActivity.this.finish();
             startActivity(i);
