@@ -32,16 +32,16 @@ public class QuizActivity extends Activity implements View.OnClickListener {
     //create string array of questions
     public static String[] questions = new String[] {
             "The \"funny bone\" is really a bone.",
-            "Fingernails and hair continue to grow after death.",
             "The mosquito has caused more human deaths than any other creature in history.",
+            "Fingernails and hair continue to grow after death.",
             "Russia has the largest area of any country in the world.",
-            "The Enlightenment was an intellectual movement that celebrated religious faith over reason.",
+            "Harry Potter's archenemy is Tom Marvolo Riddle.",
             "Corn is the most produced crop in the world."
     };
 
     // boolean array of answers
     public static boolean[] answers = new boolean[] {
-            false, false, true, true, false, true
+            false, true, false, true, true, true
     };
 
     @Override
@@ -73,7 +73,10 @@ public class QuizActivity extends Activity implements View.OnClickListener {
 
 
     public void nextQuestion(){
+        //if the question reaches the length of questions then start new activity
+        //otherwise set new question
         if (count == questions.length){
+            //send variables to results activity and start results activity
             Intent i = new Intent(QuizActivity.this, ResultsActivity.class);
             Bundle bundle = new Bundle();
             bundle.putInt("scoreID", score);
@@ -97,6 +100,7 @@ public class QuizActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         switch (view.getId()){
+            //if the false button is pressed and the answer is false add to score
             case R.id.falseID:
                 answer = false;
                 if (answer == answers[count-1]){
@@ -104,6 +108,8 @@ public class QuizActivity extends Activity implements View.OnClickListener {
                 }
                 nextQuestion();
                 break;
+
+            //if the true button is pressed and the answer is true add to score
             case R.id.trueID:
                 answer = true;
                 if (answer == answers[count-1]){

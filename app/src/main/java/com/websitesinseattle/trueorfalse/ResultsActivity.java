@@ -34,6 +34,7 @@ public class ResultsActivity extends Activity implements View.OnClickListener {
         //set listeners
         restart.setOnClickListener(this);
 
+        //accepts variables from the quiz activity
         Bundle bundle = getIntent().getExtras();
         int score = bundle.getInt("scoreID");
         int qLength = bundle.getInt("qLength");
@@ -73,6 +74,7 @@ public class ResultsActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+        //when the retake button is clicked start quiz activity
         startActivity(new Intent(getApplicationContext(),
                 QuizActivity.class));
     }

@@ -27,6 +27,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+        //when start button is clicked then start quiz activity
         startActivity(new Intent(getApplicationContext(),
                 QuizActivity.class));
     }
